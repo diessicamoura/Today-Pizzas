@@ -8,21 +8,18 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f3f3f3;
+    font-family: 'Georgia', serif;
+    background: #f5e6d3; /* bege retrô */
 }
 
 /* HEADER */
 .header {
-    background: #f7931e;
+    background: #d97706;
     padding: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.header img {
-    width: 50px;
+    color: #fff;
 }
 
 /* HERO */
@@ -40,33 +37,30 @@ body {
 }
 
 .logo-box {
-    background: #f7931e;
+    background: #d97706;
     padding: 10px;
     display: inline-block;
+    border-radius: 8px;
 }
 
-.logo-box img {
-    width: 60px;
-}
-
-.hero h2 {
-    margin: 10px 0;
-}
-
+/* BOTÕES */
 .btn {
-    background: #f7931e;
+    background: #d97706;
     padding: 12px 20px;
     border-radius: 10px;
     border: none;
     font-weight: bold;
     cursor: pointer;
+    color: #fff;
 }
 
-/* CARDÁPIO */
+/* TÍTULOS */
 .titulo {
     padding: 20px;
+    color: #5a3e2b;
 }
 
+/* TABS */
 .tabs {
     display: flex;
     gap: 10px;
@@ -75,17 +69,18 @@ body {
 
 .tab {
     padding: 10px 15px;
-    background: #ddd;
+    background: #e8d5b7;
     border-radius: 20px;
     cursor: pointer;
+    color: #5a3e2b;
 }
 
 .tab.active {
-    background: #f7931e;
+    background: #d97706;
     color: #fff;
 }
 
-/* PRODUTOS */
+/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
@@ -93,10 +88,17 @@ body {
     padding: 20px;
 }
 
+/* CARD */
 .card {
-    background: #fff;
+    background: #fffaf3;
     border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.03);
 }
 
 .card img {
@@ -107,45 +109,44 @@ body {
 
 .info {
     padding: 10px;
+    color: #4b2e1e;
 }
 
+/* BOTÃO ADD */
 .add {
-    background: #f7931e;
+    background: #d97706;
     color: #fff;
     border: none;
     width: 100%;
     padding: 8px;
     border-radius: 8px;
+    margin-top: 5px;
 }
 
 /* PEDIDO */
 .pedido {
-    background: #fff;
+    background: #fffaf3;
     margin: 20px;
     padding: 20px;
     border-radius: 15px;
-    border: 2px solid #f7931e;
+    border: 2px solid #d97706;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    color: #4b2e1e;
 }
 
+/* INPUTS */
 input, select {
     width: 100%;
     padding: 10px;
     margin-top: 8px;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #d6bfa7;
+    background: #fff;
 }
 
-.linha {
-    display: flex;
-    gap: 10px;
-}
-
-.linha input {
-    flex: 1;
-}
-
+/* FINALIZAR */
 .finalizar {
-    background: #25D366;
+    background: #16a34a;
     color: #fff;
     padding: 15px;
     border: none;
