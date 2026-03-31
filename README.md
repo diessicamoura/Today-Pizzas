@@ -241,7 +241,7 @@ function finalizarPedido(){
     msg += "\n📍 Endereço: " + endereco;
     msg += "\n💳 Pagamento: " + pagamento;
 
-    let numero = "5599999999999"; // SEU NUMERO
+    let numero = "5544998905286"; // SEU NUMERO
 
     let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
 
