@@ -3,322 +3,386 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Today Pizza</title>
+<title>Today Pizza - Delivery</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Georgia', serif;
-    background: #f5e6d3;
-}
+    :root {
+        --primary: #d97706;
+        --secondary: #f5e6d3;
+        --dark: #5a3e2b;
+        --success: #16a34a;
+    }
 
-/* HEADER */
-.header {
-    background: #d97706;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #fff;
-}
+    body {
+        margin: 0;
+        font-family: 'Georgia', serif;
+        background: var(--secondary);
+        color: var(--dark);
+    }
 
-.header img {
-    width: 40px;
-}
+    /* HEADER */
+    .header {
+        background: var(--primary);
+        padding: 15px 25px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
 
-/* HERO */
-.hero {
-    background: url("https://images.unsplash.com/photo-1593560708920-61dd98c46a4e") center/cover no-repeat;
-    height: 280px;
-    position: relative;
-}
+    .header img { width: 45px; }
 
-.overlay {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: #fff;
-}
+    /* HERO */
+    .hero {
+        background: url("https://images.unsplash.com/photo-1593560708920-61dd98c46a4e") center/cover no-repeat;
+        height: 300px;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+    }
 
-.logo-box {
-    background: #d97706;
-    padding: 8px;
-    border-radius: 8px;
-    display: inline-block;
-}
+    .overlay {
+        background: rgba(0,0,0,0.5);
+        width: 100%;
+        padding: 30px;
+        color: #fff;
+    }
 
-.logo-box img {
-    width: 45px;
-}
+    .logo-box {
+        background: var(--primary);
+        padding: 10px;
+        border-radius: 12px;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
 
-.btn {
-    background: #d97706;
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: none;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-}
+    .logo-box img { width: 50px; }
 
-/* TITULO */
-.titulo {
-    padding: 20px;
-    color: #5a3e2b;
-}
+    .btn-hero {
+        background: var(--primary);
+        padding: 12px 25px;
+        border-radius: 30px;
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
-/* TABS */
-.tabs {
-    display: flex;
-    gap: 10px;
-    padding: 0 20px;
-}
+    /* TITULO */
+    .titulo-secao {
+        text-align: center;
+        padding: 30px 20px 10px;
+    }
 
-.tab {
-    padding: 10px 15px;
-    background: #e8d5b7;
-    border-radius: 20px;
-    cursor: pointer;
-}
+    /* GRID DE 3 COLUNAS */
+    .container-cardapio {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-.tab.active {
-    background: #d97706;
-    color: #fff;
-}
+    @media (max-width: 992px) {
+        .container-cardapio { grid-template-columns: 1fr; }
+    }
 
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
-    gap: 15px;
-    padding: 20px;
-}
+    .coluna h2 {
+        background: var(--dark);
+        color: #fff;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-/* CARD */
-.card {
-    background: #fffaf3;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
+    /* CARD DE PRODUTO */
+    .card {
+        background: #fffaf3;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        display: flex;
+        flex-direction: column;
+    }
 
-.card img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-}
+    .card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
 
-.info {
-    padding: 10px;
-    color: #4b2e1e;
-}
+    .info {
+        padding: 15px;
+        flex-grow: 1;
+    }
 
-.add {
-    background: #d97706;
-    color: #fff;
-    border: none;
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-}
+    .info h4 { margin: 0 0 5px; font-size: 1.1rem; }
+    .info strong { color: var(--primary); font-size: 1.2rem; }
 
-/* PEDIDO */
-.pedido {
-    background: #fffaf3;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 15px;
-    border: 2px solid #d97706;
-    color: #4b2e1e;
-}
+    .add-btn {
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 10px;
+    }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    border-radius: 8px;
-    border: 1px solid #d6bfa7;
-}
+    /* AREA DO PEDIDO */
+    .pedido-container {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #fffaf3;
+        padding: 25px;
+        border-radius: 15px;
+        border: 2px solid var(--primary);
+    }
 
-.linha {
-    display: flex;
-    gap: 10px;
-}
+    input, select {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 8px;
+        border: 1px solid #d6bfa7;
+        box-sizing: border-box;
+    }
 
-.linha input {
-    flex: 1;
-}
+    .linha-endereco {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
 
-/* PIX BOX */
-#pixBox {
-    display: none;
-    background: #fff3cd;
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
+    #pixBox {
+        display: none; /* Controlado pelo JS */
+        background: #fff3cd;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 5px solid var(--primary);
+        margin-top: 15px;
+    }
 
-/* FINALIZAR */
-.finalizar {
-    background: #16a34a;
-    color: #fff;
-    padding: 15px;
-    border: none;
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 15px;
-    font-weight: bold;
-}
+    .btn-finalizar {
+        background: var(--success);
+        color: #fff;
+        padding: 18px;
+        border: none;
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #lista-resumo {
+        list-style: none;
+        padding: 0;
+    }
+
+    #lista-resumo li {
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+    }
 </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
 <div class="header">
-    <img src="logo.png">
-    🛒 ☰
+    <img src="TODAY-PNG.jpg" alt="Logo">
+    <span>Marechal Cândido Rondon - PR</span>
+    <div>🛒 Menu</div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
     <div class="overlay">
         <div class="logo-box">
-            <img src="logo.png">
+            <img src="TODAY-PNG.jpg" alt="Logo">
         </div>
-        <h2>Delivery em Marechal Cândido Rondon - PR 🍕</h2>
-        <button class="btn" onclick="scrollCardapio()">Ver Cardápio</button>
+        <h1>Today Pizza 🍕</h1>
+        <p>A melhor massa da região direto na sua casa!</p>
+        <button class="btn-hero" onclick="document.getElementById('cardapio').scrollIntoView({behavior:'smooth'})">Ver Cardápio</button>
     </div>
 </div>
 
-<!-- CARDAPIO -->
-<div id="cardapio">
-<div class="titulo">
+<div id="cardapio" class="titulo-secao">
     <h2>Nosso Cardápio</h2>
 </div>
 
-<div class="tabs">
-    <div class="tab active" onclick="trocar('salgada')">Salgadas</div>
-    <div class="tab" onclick="trocar('doce')">Doces</div>
-    <div class="tab" onclick="trocar('bebida')">Bebidas</div>
+<div class="container-cardapio">
+    <div class="coluna">
+        <h2>🍕 Salgadas</h2>
+        <div id="lista-salgadas"></div>
+    </div>
+
+    <div class="coluna">
+        <h2>🍫 Doces</h2>
+        <div id="lista-doces"></div>
+    </div>
+
+    <div class="coluna">
+        <h2>🥤 Bebidas</h2>
+        <div id="lista-bebidas"></div>
+    </div>
 </div>
 
-<div class="grid" id="produtos"></div>
-</div>
+<div class="pedido-container">
+    <h3>🛒 Seu Carrinho</h3>
+    <ul id="lista-resumo">
+        <p id="carrinho-vazio">O carrinho está vazio...</p>
+    </ul>
+    <p style="font-size: 1.4rem;"><strong>Total: R$ <span id="total-html">0.00</span></strong></p>
 
-<!-- PEDIDO -->
-<div class="pedido">
-<h3>🛒 Seu Pedido</h3>
-<ul id="lista"></ul>
+    <hr>
 
-<p><strong>Total: R$ <span id="total">0.00</span></strong></p>
+    <h4>📍 Endereço de Entrega (Obrigatório)</h4>
+    <input type="text" id="rua" placeholder="Rua / Logradouro">
+    <div class="linha-endereco">
+        <input type="text" id="numero" placeholder="Número">
+        <input type="text" id="bairro" placeholder="Bairro">
+    </div>
 
-<hr>
+    <h4>💳 Forma de Pagamento</h4>
+    <select id="pagamento-select">
+        <option value="PIX">Pix (Pagamento Antecipado)</option>
+        <option value="CARTÃO">Cartão na Entrega</option>
+        <option value="DINHEIRO">Dinheiro</option>
+    </select>
 
-<h4>📍 Endereço</h4>
-<input type="text" id="rua" placeholder="Rua">
+    <div id="pixBox">
+        <p><strong>✨ Chave Pix da Today Pizza:</strong></p>
+        <h3 style="margin: 5px 0; color: #d97706;">44998905286</h3>
+        <small>Envie o comprovante após finalizar no WhatsApp.</small>
+    </div>
 
-<div class="linha">
-    <input type="text" id="numero" placeholder="Número">
-    <input type="text" id="bairro" placeholder="Bairro">
-</div>
-
-<h4>💳 Pagamento</h4>
-<select id="pagamento">
-<option value="PIX">Pix</option>
-<option value="Cartão">Cartão na entrega</option>
-</select>
-
-<div id="pixBox">
-    <strong>💸 Chave Pix:</strong><br>
-    44998905286
-</div>
-
-<button class="finalizar" onclick="finalizar()">Finalizar no WhatsApp</button>
+    <button class="btn-finalizar" onclick="finalizarPedido()">✅ Finalizar no WhatsApp</button>
 </div>
 
 <script>
-let produtos = {
-  salgada: [ {nome:"🔥 Combo Família (Calabresa + Coca 2L)", preco:49, destaque:true,         img:"https://altoastral.joaobidu.com.br/antigas/uploads/legacy/2016/07/AAT001-P001-89335-1-m-Divulgacao_1.jpg"}, {nome:"⭐ Calabresa         Especial", preco:35, destaque:true, img:"https://images.unsplash.com/photo-1604382355076-af4b0eb60143"}, {nome:"⭐ Frango Cremoso     com Catupiry", preco:38, destaque:true, img:"https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"}, {nome:"Pepperoni Premium",     preco:41, img:"https://images.unsplash.com/photo-1628840042765-356cda07504e"}, {nome:"Quatro Queijos Supreme", preco:42,         img:"https://images.unsplash.com/photo-1548365328-9f547fb0953d"}, {nome:"Moda da Casa Completa", preco:45, img:"https://images.unsplash.com/photo-1594007654729-407eedc4fe24"}, {nome:"Bacon Lovers", preco:39, img:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"}, {nome:"Portuguesa Tradicional", preco:40, img:"https://images.unsplash.com/photo-1601924638867-3ec2b4d2d8b0"}, {nome:"Marguerita Italiana", preco:34, img:"https://images.unsplash.com/photo-1604382354936-07c5d9983bd3"}, {nome:"Carne Seca Especial", preco:44, img:"https://images.unsplash.com/photo-1590947132387-155cc02f3212"} ], doce: [ {nome:"🔥 Combo Doce (Chocolate + Guaraná)", preco:39, destaque:true, img:"https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8"}, {nome:"⭐ Chocolate com Morango", preco:35, destaque:true, img:"https://images.unsplash.com/photo-1594007654729-407eedc4fe24"}, {nome:"⭐ Sensação Premium", preco:36, destaque:true, img:"https://images.unsplash.com/photo-1613145997987-9b1c4e0c6b77"}, {nome:"Nutella Supreme", preco:38, img:"https://images.unsplash.com/photo-1613145997970-db84a7975fbb"}, {nome:"Chocolate Branco Especial", preco:34, img:"https://images.unsplash.com/photo-1617196035154-1e1d7c19e781"}, {nome:"Doce de Leite Cremoso", preco:33, img:"https://images.unsplash.com/photo-1605478909807-3a6c5c2e7f92"}, {nome:"Prestígio", preco:32, img:"https://images.unsplash.com/photo-1599785209707-a456fc1337bb"}, {nome:"Banana Nevada", preco:28, img:"https://images.unsplash.com/photo-1585238342024-78d387f4a707"}, {nome:"Romeu e Julieta", preco:31, img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"}, {nome:"Oreo", preco:37, img:"https://images.unsplash.com/photo-1586985289906-406988974504"} ], bebida: [ {nome:"⭐ Coca-Cola 2L (Mais pedida)", preco:12, destaque:true, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"}, {nome:"Guaraná 2L", preco:10, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"}, {nome:"Fanta Laranja", preco:10, img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"}, {nome:"Sprite", preco:10, img:"https://images.unsplash.com/photo-1624517452488-04869289c4ca"}, {nome:"Coca-Cola Lata", preco:6, img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"}, {nome:"Guaraná Lata", preco:5, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"}, {nome:"Água Mineral", preco:4, img:"https://images.unsplash.com/photo-1564419320461-6870880221ad"}, {nome:"Suco Natural de Laranja", preco:8, img:"https://images.unsplash.com/photo-1572490122747-3968b75cc699"}, {nome:"Suco de Uva", preco:8, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"}, {nome:"Refrigerante 600ml", preco:7, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"} ] };
+    // DADOS DO CARDÁPIO (10 de cada + bebidas)
+    const cardapioData = {
+        salgadas: [
+            {nome: "Calabresa", preco: 35, img: "https://images.unsplash.com/photo-1604382355076-af4b0eb60143"},
+            {nome: "Frango com Catupiry", preco: 38, img: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"},
+            {nome: "Portuguesa", preco: 40, img: "https://images.unsplash.com/photo-1601924638867-3ec2b4d2d8b0"},
+            {nome: "Margherita", preco: 34, img: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3"},
+            {nome: "4 Queijos", preco: 42, img: "https://images.unsplash.com/photo-1548365328-9f547fb0953d"},
+            {nome: "Pepperoni", preco: 41, img: "https://images.unsplash.com/photo-1628840042765-356cda07504e"},
+            {nome: "Bacon", preco: 39, img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"},
+            {nome: "Moda da Casa", preco: 45, img: "https://images.unsplash.com/photo-1594007654729-407eedc4fe24"},
+            {nome: "Lombo", preco: 40, img: "https://images.unsplash.com/photo-1590947132387-155cc02f3212"},
+            {nome: "Vegetariana", preco: 38, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591"}
+        ],
+        doces: [
+            {nome: "Chocolate Preto", preco: 35, img: "https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8"},
+            {nome: "Chocolate Branco", preco: 35, img: "https://images.unsplash.com/photo-1613145997970-db84a7975fbb"},
+            {nome: "Morango c/ Chocolate", preco: 38, img: "https://images.unsplash.com/photo-1594007654729-407eedc4fe24"},
+            {nome: "Banana c/ Canela", preco: 30, img: "https://images.unsplash.com/photo-1585238342024-78d387f4a707"},
+            {nome: "Romeu e Julieta", preco: 32, img: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
+            {nome: "Prestígio", preco: 34, img: "https://images.unsplash.com/photo-1599785209707-a456fc1337bb"},
+            {nome: "Oreo", preco: 37, img: "https://images.unsplash.com/photo-1586985289906-406988974504"},
+            {nome: "Doce de Leite", preco: 33, img: "https://images.unsplash.com/photo-1605478909807-3a6c5c2e7f92"},
+            {nome: "M&Ms", preco: 36, img: "https://images.unsplash.com/photo-1613145997987-9b1c4e0c6b77"},
+            {nome: "Paçoca", preco: 31, img: "https://images.unsplash.com/photo-1617196035154-1e1d7c19e781"}
+        ],
+        bebidas: [
+            {nome: "Coca-Cola 2L", preco: 12, img: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a"},
+            {nome: "Guaraná 2L", preco: 10, img: "https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"},
+            {nome: "Fanta Laranja 2L", preco: 10, img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"},
+            {nome: "Água Mineral", preco: 4, img: "https://images.unsplash.com/photo-1564419320461-6870880221ad"}
+        ]
+    };
 
-let carrinho = [];
-let total = 0;
+    let carrinho = [];
+    let valorTotal = 0;
 
-function trocar(tipo){
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-    event.target.classList.add('active');
-
-    let lista = document.getElementById("produtos");
-    lista.innerHTML = "";
-
-    produtos[tipo].forEach(p=>{
-        lista.innerHTML += `
-        <div class="card">
-            <img src="${p.img}">
-            <div class="info">
-                <h4>${p.nome}</h4>
-                <strong>R$ ${p.preco}</strong>
-                <button class="add" onclick="add('${p.nome}',${p.preco})">Adicionar</button>
-            </div>
-        </div>`;
-    });
-}
-
-function add(nome, preco){
-    carrinho.push({nome, preco});
-    total += preco;
-
-    let li = document.createElement("li");
-    li.innerText = nome + " - R$ " + preco;
-
-    document.getElementById("lista").appendChild(li);
-    document.getElementById("total").innerText = total.toFixed(2);
-}
-
-function finalizar(){
-    let rua = document.getElementById("rua").value;
-
-    if(carrinho.length === 0 || rua === ""){
-        alert("Preencha o pedido e endereço!");
-        return;
+    // INICIALIZAR CARDÁPIO
+    function carregarProdutos() {
+        const render = (lista, id) => {
+            const div = document.getElementById(id);
+            lista.forEach(p => {
+                div.innerHTML += `
+                    <div class="card">
+                        <img src="${p.img}">
+                        <div class="info">
+                            <h4>${p.nome}</h4>
+                            <strong>R$ ${p.preco.toFixed(2)}</strong>
+                            <button class="add-btn" onclick="adicionar('${p.nome}', ${p.preco})">Adicionar</button>
+                        </div>
+                    </div>`;
+            });
+        };
+        render(cardapioData.salgadas, 'lista-salgadas');
+        render(cardapioData.doces, 'lista-doces');
+        render(cardapioData.bebidas, 'lista-bebidas');
     }
 
-    let numeroCasa = document.getElementById("numero").value;
-    let bairro = document.getElementById("bairro").value;
-    let pagamento = document.getElementById("pagamento").value;
-
-    let msg = "🍕 *TODAY PIZZA* 🍕\n\n";
-
-    carrinho.forEach(i=>{
-        msg += "• " + i.nome + "\n";
-    });
-
-    msg += "\n💰 Total: R$ " + total.toFixed(2);
-    msg += "\n📍 Endereço: " + rua + ", " + numeroCasa + " - " + bairro;
-    msg += "\n💳 Pagamento: " + pagamento;
-
-    if(pagamento === "PIX"){
-        msg += "\n💸 Chave Pix: 44998905286";
+    function adicionar(nome, preco) {
+        carrinho.push({nome, preco});
+        valorTotal += preco;
+        atualizarCarrinho();
     }
 
-    msg += "\n🚚 Marechal Cândido Rondon - PR";
+    function atualizarCarrinho() {
+        const listaUI = document.getElementById("lista-resumo");
+        const totalUI = document.getElementById("total-html");
+        
+        if(carrinho.length > 0) document.getElementById("carrinho-vazio").style.display = "none";
+        
+        listaUI.innerHTML = "";
+        carrinho.forEach(item => {
+            listaUI.innerHTML += `<li><span>${item.nome}</span> <span>R$ ${item.preco.toFixed(2)}</span></li>`;
+        });
+        totalUI.innerText = valorTotal.toFixed(2);
+    }
 
-    let numero = "5544998905286";
-    let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
+    // LOGICA DO PIX AUTOMÁTICO
+    const selectPgto = document.getElementById("pagamento-select");
+    const pixBox = document.getElementById("pixBox");
 
-    window.open(url, "_blank");
-}
+    function verificarPix() {
+        pixBox.style.display = selectPgto.value === "PIX" ? "block" : "none";
+    }
 
-document.getElementById("pagamento").addEventListener("change", function(){
-    let pix = document.getElementById("pixBox");
-    pix.style.display = this.value === "PIX" ? "block" : "none";
-});
+    selectPgto.addEventListener("change", verificarPix);
+    verificarPix(); // Chama ao carregar para garantir se o Pix for o primeiro da lista
 
-function scrollCardapio(){
-    document.getElementById("cardapio").scrollIntoView({behavior:"smooth"});
-}
+    // FINALIZAR E ENVIAR
+    function finalizarPedido() {
+        const rua = document.getElementById("rua").value;
+        const num = document.getElementById("numero").value;
+        const bairro = document.getElementById("bairro").value;
+        const pgto = selectPgto.value;
 
-trocar('salgada');
+        if(carrinho.length === 0) return alert("Seu carrinho está vazio!");
+        if(!rua || !num || !bairro) return alert("Por favor, preencha o endereço completo!");
+
+        let mensagem = "🍕 *PEDIDO - TODAY PIZZA* 🍕\n\n";
+        carrinho.forEach(i => mensagem += `• ${i.nome}\n`);
+        mensagem += `\n💰 *Total:* R$ ${valorTotal.toFixed(2)}`;
+        mensagem += `\n💳 *Pagamento:* ${pgto}`;
+        if(pgto === "PIX") mensagem += "\n🔑 Chave: 44998905286";
+        mensagem += `\n📍 *Endereço:* ${rua}, ${num} - ${bairro}`;
+        mensagem += "\n🚚 Marechal Cândido Rondon - PR";
+
+        const whats = "5544998905286";
+        const url = `https://wa.me/${whats}?text=${encodeURIComponent(mensagem)}`;
+
+        window.open(url, "_blank");
+        alert("✅ PEDIDO CONCLUÍDO COM SUCESSO!");
+    }
+
+    carregarProdutos();
 </script>
 
 </body>
