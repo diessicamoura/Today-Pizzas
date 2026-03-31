@@ -184,7 +184,7 @@ input, select {
 </div>
 
 <div class="tabs">
-    <div class="tab active" onclick="trocar('salgada')">Todas</div>
+    <div class="tab active" onclick="trocar('salgada')">Salgadas</div>
     <div class="tab" onclick="trocar('doce')">Doces</div>
     <div class="tab" onclick="trocar('bebida')">Bebidas</div>
 </div>
@@ -220,15 +220,44 @@ input, select {
 
 <script>
 let produtos = {
+    let produtos = {
     salgada: [
         {nome:"Calabresa", preco:35, img:"https://images.unsplash.com/photo-1604382355076-af4b0eb60143"},
-        {nome:"Frango com Catupiry", preco:38, img:"https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"}
+        {nome:"Frango com Catupiry", preco:38, img:"https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"},
+        {nome:"Portuguesa", preco:40, img:"https://images.unsplash.com/photo-1601924638867-3ec2b4d2d8b0"},
+        {nome:"Marguerita", preco:34, img:"https://images.unsplash.com/photo-1604382354936-07c5d9983bd3"},
+        {nome:"Quatro Queijos", preco:42, img:"https://images.unsplash.com/photo-1548365328-9f547fb0953d"},
+        {nome:"Bacon com Milho", preco:39, img:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"},
+        {nome:"Moda da Casa", preco:45, img:"https://images.unsplash.com/photo-1594007654729-407eedc4fe24"},
+        {nome:"Pepperoni", preco:41, img:"https://images.unsplash.com/photo-1628840042765-356cda07504e"},
+        {nome:"Vegetariana", preco:36, img:"https://images.unsplash.com/photo-1542281286-9e0a16bb7366"},
+        {nome:"Carne Seca", preco:44, img:"https://images.unsplash.com/photo-1590947132387-155cc02f3212"}
     ],
+
     doce: [
-        {nome:"Chocolate", preco:30, img:"https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8"}
+        {nome:"Chocolate", preco:30, img:"https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8"},
+        {nome:"Chocolate com Morango", preco:35, img:"https://images.unsplash.com/photo-1594007654729-407eedc4fe24"},
+        {nome:"Banana com Canela", preco:28, img:"https://images.unsplash.com/photo-1585238342024-78d387f4a707"},
+        {nome:"Prestígio", preco:32, img:"https://images.unsplash.com/photo-1599785209707-a456fc1337bb"},
+        {nome:"Doce de Leite", preco:33, img:"https://images.unsplash.com/photo-1605478909807-3a6c5c2e7f92"},
+        {nome:"Chocolate Branco", preco:34, img:"https://images.unsplash.com/photo-1617196035154-1e1d7c19e781"},
+        {nome:"Romeu e Julieta", preco:31, img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
+        {nome:"Nutella", preco:38, img:"https://images.unsplash.com/photo-1613145997970-db84a7975fbb"},
+        {nome:"Sensação", preco:36, img:"https://images.unsplash.com/photo-1613145997987-9b1c4e0c6b77"},
+        {nome:"Oreo", preco:37, img:"https://images.unsplash.com/photo-1586985289906-406988974504"}
     ],
+
     bebida: [
-        {nome:"Coca-Cola 2L", preco:12, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"}
+        {nome:"Coca-Cola 2L", preco:12, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"},
+        {nome:"Guaraná 2L", preco:10, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"},
+        {nome:"Fanta Laranja", preco:10, img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"},
+        {nome:"Sprite", preco:10, img:"https://images.unsplash.com/photo-1624517452488-04869289c4ca"},
+        {nome:"Coca-Cola Lata", preco:6, img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"},
+        {nome:"Guaraná Lata", preco:5, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"},
+        {nome:"Água Mineral", preco:4, img:"https://images.unsplash.com/photo-1564419320461-6870880221ad"},
+        {nome:"Suco de Laranja", preco:8, img:"https://images.unsplash.com/photo-1572490122747-3968b75cc699"},
+        {nome:"Suco de Uva", preco:8, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"},
+        {nome:"Refrigerante 600ml", preco:7, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"}
     ]
 };
 
