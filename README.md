@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Today Pizza</title>
 
 <style>
@@ -15,7 +16,7 @@ body {
 /* HERO */
 .hero {
     background: url("https://images.unsplash.com/photo-1593560708920-61dd98c46a4e") center/cover no-repeat;
-    height: 260px;
+    height: 220px;
 }
 
 .overlay {
@@ -27,8 +28,8 @@ body {
 }
 
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     background: #f7931e;
     border-radius: 12px;
     display: flex;
@@ -37,22 +38,32 @@ body {
 }
 
 .logo img {
-    width: 60px;
+    width: 55px;
 }
 
 .hero-text {
     margin-left: 15px;
 }
 
+.hero-text h1 {
+    margin: 0;
+}
+
+.hero-text p {
+    margin: 5px 0 0;
+    color: #555;
+}
+
+/* ALERTA */
 .alerta {
     background: #fff;
     text-align: center;
-    padding: 12px;
+    padding: 10px;
     font-weight: bold;
     border-bottom: 1px solid #ddd;
 }
 
-/* GRID 3 COLUNAS */
+/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -60,10 +71,16 @@ body {
     padding: 20px;
 }
 
+/* RESPONSIVO */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* COLUNAS */
 .coluna h2 {
     text-align: center;
-    margin-bottom: 10px;
 }
 
 /* CARD */
@@ -89,14 +106,14 @@ button {
     background: #f7931e;
     color: #fff;
     border: none;
-    padding: 8px;
+    padding: 10px;
     width: 100%;
-    margin-top: 8px;
     border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-/* CARRINHO */
+/* CARRINHO DESKTOP */
 .carrinho {
     background: #fff;
     padding: 15px;
@@ -108,10 +125,28 @@ button {
     border-left: 1px solid #ddd;
 }
 
+/* CARRINHO MOBILE */
+@media (max-width: 900px) {
+    .carrinho {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        height: auto;
+        border-top: 1px solid #ddd;
+    }
+}
+
 .finalizar {
     background: #f7931e;
     color: #fff;
     width: 100%;
+    margin-top: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
     margin-top: 10px;
 }
 
@@ -120,10 +155,11 @@ button {
 
 <body>
 
+<!-- TOPO -->
 <div class="hero">
     <div class="overlay">
         <div class="logo">
-            <img src="logo.png">
+            <img src="logo.png" alt="Today Pizza">
         </div>
         <div class="hero-text">
             <h1>Today Pizza</h1>
@@ -136,7 +172,7 @@ button {
 🚚 Apenas entregas • Marechal Cândido Rondon - PR
 </div>
 
-<!-- GRID -->
+<!-- CARDÁPIO -->
 <div class="grid">
 
 <!-- SALGADAS -->
@@ -155,9 +191,9 @@ button {
 <div class="pizza">
 <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e">
 <div class="pizza-info">
-<h3>Frango c/ Catupiry</h3>
+<h3>Frango com Catupiry</h3>
 <strong>R$ 38</strong>
-<button onclick="addCarrinho('Frango',38)">Adicionar</button>
+<button onclick="addCarrinho('Frango com Catupiry',38)">Adicionar</button>
 </div>
 </div>
 
@@ -181,7 +217,7 @@ button {
 <div class="pizza-info">
 <h3>Morango com Chocolate</h3>
 <strong>R$ 35</strong>
-<button onclick="addCarrinho('Morango',35)">Adicionar</button>
+<button onclick="addCarrinho('Morango com Chocolate',35)">Adicionar</button>
 </div>
 </div>
 
@@ -196,7 +232,7 @@ button {
 <div class="pizza-info">
 <h3>Coca-Cola 2L</h3>
 <strong>R$ 12</strong>
-<button onclick="addCarrinho('Coca 2L',12)">Adicionar</button>
+<button onclick="addCarrinho('Coca-Cola 2L',12)">Adicionar</button>
 </div>
 </div>
 
@@ -205,7 +241,7 @@ button {
 <div class="pizza-info">
 <h3>Guaraná 2L</h3>
 <strong>R$ 10</strong>
-<button onclick="addCarrinho('Guaraná',10)">Adicionar</button>
+<button onclick="addCarrinho('Guaraná 2L',10)">Adicionar</button>
 </div>
 </div>
 
@@ -215,9 +251,9 @@ button {
 
 <!-- CARRINHO -->
 <div class="carrinho">
-<h2>Carrinho</h2>
+<h3>Carrinho</h3>
 <ul id="lista"></ul>
-<h3>Total: R$ <span id="total">0</span></h3>
+<strong>Total: R$ <span id="total">0</span></strong>
 
 <select id="pagamento">
 <option value="pix">PIX</option>
@@ -234,12 +270,12 @@ function addCarrinho(nome, preco){
     let lista = document.getElementById("lista");
 
     let item = document.createElement("li");
-    item.innerText = nome + " - R$ " + preco;
+    item.innerText = nome + " - R$ " + preco.toFixed(2);
 
     lista.appendChild(item);
 
     total += preco;
-    document.getElementById("total").innerText = total;
+    document.getElementById("total").innerText = total.toFixed(2);
 }
 
 function finalizarPedido(){
@@ -248,7 +284,13 @@ function finalizarPedido(){
         return;
     }
 
-    alert("Pedido realizado!");
+    let pagamento = document.getElementById("pagamento").value;
+
+    if(pagamento === "pix"){
+        alert("Pedido realizado! Enviaremos o PIX.");
+    } else {
+        alert("Pedido realizado! Pague na entrega.");
+    }
 }
 </script>
 
