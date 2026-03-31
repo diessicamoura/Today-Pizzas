@@ -220,7 +220,6 @@ input, select {
 
 <script>
 let produtos = {
-    let produtos = {
     salgada: [
         {nome:"Calabresa", preco:35, img:"https://images.unsplash.com/photo-1604382355076-af4b0eb60143"},
         {nome:"Frango com Catupiry", preco:38, img:"https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"},
@@ -318,7 +317,7 @@ function finalizar(){
     msg += "\n💳 Pagamento: " + pagamento;
     msg += "\n🚚 Marechal Cândido Rondon - PR";
 
-    let numero = "5599999999999"; // SEU NUMERO
+    let numero = "5544998905286"; // SEU NUMERO
 
     let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
 
