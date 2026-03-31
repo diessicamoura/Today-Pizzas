@@ -149,7 +149,6 @@ select {
     padding: 8px;
     margin-top: 10px;
 }
-
 </style>
 </head>
 
@@ -265,6 +264,7 @@ select {
 
 <script>
 let total = 0;
+let carrinho = [];
 
 function addCarrinho(nome, preco){
     let lista = document.getElementById("lista");
@@ -274,23 +274,41 @@ function addCarrinho(nome, preco){
 
     lista.appendChild(item);
 
+    carrinho.push({nome, preco});
+
     total += preco;
     document.getElementById("total").innerText = total.toFixed(2);
 }
 
 function finalizarPedido(){
-    if(total === 0){
+    if(carrinho.length === 0){
         alert("Carrinho vazio!");
         return;
     }
 
     let pagamento = document.getElementById("pagamento").value;
 
+    let mensagem = "🍕 *PEDIDO - TODAY PIZZA* 🍕\n\n";
+
+    carrinho.forEach(item => {
+        mensagem += "• " + item.nome + " - R$ " + item.preco.toFixed(2) + "\n";
+    });
+
+    mensagem += "\n💰 Total: R$ " + total.toFixed(2);
+
     if(pagamento === "pix"){
-        alert("Pedido realizado! Enviaremos o PIX.");
+        mensagem += "\n📲 Pagamento: PIX";
     } else {
-        alert("Pedido realizado! Pague na entrega.");
+        mensagem += "\n💳 Pagamento: Cartão na entrega";
     }
+
+    mensagem += "\n📍 Entrega em Marechal Cândido Rondon - PR";
+
+    let numero = "5544998905286"; // 🔴 
+
+    let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensagem);
+
+    window.open(url, "_blank");
 }
 </script>
 
