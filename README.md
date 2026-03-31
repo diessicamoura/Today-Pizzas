@@ -1,275 +1,306 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Today Pizza - Cardápio</title>
-    <style>
-        :root {
-            --primary: #f7931e;
-            --dark: #1a1a1a;
-            --light: #f9f9f9;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Today Pizza</title>
 
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--light);
-            color: var(--dark);
-            padding-bottom: 100px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f3f3;
+}
 
-        /* HEADER */
-        header {
-            background: var(--primary);
-            text-align: center;
-            padding: 20px;
-            color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+/* HEADER */
+.header {
+    background: #f7931e;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-        .logo-header {
-            width: 120px;
-            border-radius: 50%;
-            border: 4px solid white;
-        }
+.header img {
+    width: 50px;
+}
 
-        /* GRID DO CARDÁPIO */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+/* HERO */
+.hero {
+    background: url("https://images.unsplash.com/photo-1593560708920-61dd98c46a4e") center/cover no-repeat;
+    height: 300px;
+    position: relative;
+}
 
-        @media (max-width: 900px) {
-            .container { grid-template-columns: 1fr; }
-        }
+.overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+}
 
-        .coluna h2 {
-            background: var(--dark);
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 1.2rem;
-        }
+.logo-box {
+    background: #f7931e;
+    padding: 10px;
+    display: inline-block;
+}
 
-        /* ITENS */
-        .item {
-            background: white;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
+.logo-box img {
+    width: 60px;
+}
 
-        .item-info h4 { margin: 0; }
-        .item-info p { margin: 5px 0; color: #666; font-size: 0.9rem; }
+.hero h2 {
+    margin: 10px 0;
+}
 
-        .btn-add {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+.btn {
+    background: #f7931e;
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        /* CARRINHO E DADOS */
-        .checkout-section {
-            background: white;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 15px;
-            border: 2px solid var(--primary);
-        }
+/* CARDÁPIO */
+.titulo {
+    padding: 20px;
+}
 
-        .form-group {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 10px;
-            margin-top: 15px;
-        }
+.tabs {
+    display: flex;
+    gap: 10px;
+    padding: 0 20px;
+}
 
-        @media (max-width: 600px) {
-            .form-group { grid-template-columns: 1fr; }
-        }
+.tab {
+    padding: 10px 15px;
+    background: #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+}
 
-        input, select {
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            outline: none;
-        }
+.tab.active {
+    background: #f7931e;
+    color: #fff;
+}
 
-        .btn-finalizar {
-            background: #27ae60;
-            color: white;
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+/* PRODUTOS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+    gap: 15px;
+    padding: 20px;
+}
 
-        #resumo-carrinho {
-            list-style: none;
-            padding: 0;
-            border-bottom: 1px solid #eee;
-        }
-    </style>
+.card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.info {
+    padding: 10px;
+}
+
+.add {
+    background: #f7931e;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* PEDIDO */
+.pedido {
+    background: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #f7931e;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.linha {
+    display: flex;
+    gap: 10px;
+}
+
+.linha input {
+    flex: 1;
+}
+
+.finalizar {
+    background: #25D366;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+</style>
 </head>
+
 <body>
 
-<header>
-    <img src="TODAY-PNG.jpg" alt="Today Pizza Logo" class="logo-header">
-    <h1>Today Pizza</h1>
-    <p>O melhor delivery de Marechal Cândido Rondon 🍕</p>
-</header>
+<!-- HEADER -->
+<div class="header">
+    <img src="logo.png">
+    🛒 ☰
+</div>
 
-<div class="container">
-    <div class="coluna">
-        <h2>🍕 Pizzas Salgadas</h2>
-        <div id="pizzas-salgadas"></div>
-    </div>
-
-    <div class="coluna">
-        <h2>🍫 Pizzas Doces</h2>
-        <div id="pizzas-doces"></div>
-    </div>
-
-    <div class="coluna">
-        <h2>🥤 Bebidas</h2>
-        <div id="bebidas"></div>
+<!-- HERO -->
+<div class="hero">
+    <div class="overlay">
+        <div class="logo-box">
+            <img src="logo.png">
+        </div>
+        <h2>Delivery em Marechal Cândido Rondon - PR 🍕</h2>
+        <button class="btn" onclick="scrollCardapio()">🍴 Ver Cardápio</button>
     </div>
 </div>
 
-<div class="checkout-section">
-    <h3>🛒 Seu Pedido</h3>
-    <ul id="resumo-carrinho">
-        <p style="color: #999;">Carrinho vazio...</p>
-    </ul>
-    <h3>Total: R$ <span id="valor-total">0.00</span></h3>
+<!-- CARDÁPIO -->
+<div id="cardapio">
+<div class="titulo">
+    <h2>Nosso Cardápio</h2>
+    <p>Escolha sua pizza favorita</p>
+</div>
 
-    <hr>
-    <h3>📍 Dados para Entrega</h3>
-    <div class="form-group">
-        <input type="text" id="rua" placeholder="Rua (Obrigatório)" required>
-        <input type="text" id="numero" placeholder="Nº" required>
-        <input type="text" id="bairro" placeholder="Bairro" required>
-    </div>
-    
-    <h3 style="margin-top: 20px;">💳 Pagamento</h3>
-    <select id="metodo-pagamento" style="width: 100%;">
-        <option value="Pix">Pix</option>
-        <option value="Cartão de Crédito">Cartão de Crédito</option>
-        <option value="Cartão de Débito">Cartão de Débito</option>
-        <option value="Dinheiro">Dinheiro</option>
-    </select>
+<div class="tabs">
+    <div class="tab active" onclick="trocar('salgada')">Todas</div>
+    <div class="tab" onclick="trocar('doce')">Doces</div>
+    <div class="tab" onclick="trocar('bebida')">Bebidas</div>
+</div>
 
-    <button class="btn-finalizar" onclick="enviarPedido()">Finalizar Pedido pelo WhatsApp</button>
+<div class="grid" id="produtos"></div>
+</div>
+
+<!-- PEDIDO -->
+<div class="pedido">
+<h3>🛒 Seu Pedido</h3>
+<ul id="lista"></ul>
+
+<p><strong>Total: R$ <span id="total">0.00</span></strong></p>
+
+<hr>
+
+<h4>📍 Dados para Entrega</h4>
+<input type="text" id="rua" placeholder="Rua (Obrigatório)">
+
+<div class="linha">
+    <input type="text" id="numero" placeholder="Nº">
+    <input type="text" id="bairro" placeholder="Bairro">
+</div>
+
+<h4>💳 Pagamento</h4>
+<select id="pagamento">
+<option value="PIX">Pix</option>
+<option value="Cartão">Cartão na entrega</option>
+</select>
+
+<button class="finalizar" onclick="finalizar()">Finalizar Pedido pelo WhatsApp</button>
 </div>
 
 <script>
-    const salgadas = [
-        "Calabresa", "Frango com Catupiry", "Portuguesa", "Marguerita", "Quatro Queijos", 
-        "Moda da Casa", "Bacon", "Milho", "Palmito", "Lombo"
-    ];
-    const doces = [
-        "Chocolate Preto", "Chocolate Branco", "Prestígio", "Romeu e Julieta", "Confete",
-        "Banana com Canela", "Morango com Chocolate", "Ouro Branco", "Paçoquita", "Sensação"
-    ];
-    const itensBebidas = [
-        {nome: "Coca-Cola 2L", preco: 14},
-        {nome: "Guaraná Antártica 2L", preco: 12},
-        {nome: "Fanta Laranja 2L", preco: 12}
-    ];
+let produtos = {
+    salgada: [
+        {nome:"Calabresa", preco:35, img:"https://images.unsplash.com/photo-1604382355076-af4b0eb60143"},
+        {nome:"Frango com Catupiry", preco:38, img:"https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"}
+    ],
+    doce: [
+        {nome:"Chocolate", preco:30, img:"https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8"}
+    ],
+    bebida: [
+        {nome:"Coca-Cola 2L", preco:12, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"}
+    ]
+};
 
-    let carrinho = [];
+let carrinho = [];
+let total = 0;
 
-    // Gerar Cardápio Automaticamente
-    function carregarCardapio() {
-        const gridSalgada = document.getElementById('pizzas-salgadas');
-        salgadas.forEach(nome => {
-            gridSalgada.innerHTML += criarTemplateItem(nome, 35.00);
-        });
+function trocar(tipo){
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    event.target.classList.add('active');
 
-        const gridDoce = document.getElementById('pizzas-doces');
-        doces.forEach(nome => {
-            gridDoce.innerHTML += criarTemplateItem(nome, 32.00);
-        });
+    let lista = document.getElementById("produtos");
+    lista.innerHTML = "";
 
-        const gridBebida = document.getElementById('bebidas');
-        itensBebidas.forEach(item => {
-            gridBebida.innerHTML += criarTemplateItem(item.nome, item.preco);
-        });
-    }
-
-    function criarTemplateItem(nome, preco) {
-        return `
-            <div class="item">
-                <div class="item-info">
-                    <h4>${nome}</h4>
-                    <p>R$ ${preco.toFixed(2)}</p>
-                </div>
-                <button class="btn-add" onclick="addAoCarrinho('${nome}', ${preco})">+</button>
+    produtos[tipo].forEach(p=>{
+        lista.innerHTML += `
+        <div class="card">
+            <img src="${p.img}">
+            <div class="info">
+                <h4>${p.nome}</h4>
+                <strong>R$ ${p.preco}</strong>
+                <button class="add" onclick="add('${p.nome}',${p.preco})">Adicionar</button>
             </div>
-        `;
+        </div>`;
+    });
+}
+
+function add(nome, preco){
+    carrinho.push({nome, preco});
+    total += preco;
+
+    let li = document.createElement("li");
+    li.innerText = nome + " - R$ " + preco;
+
+    document.getElementById("lista").appendChild(li);
+    document.getElementById("total").innerText = total.toFixed(2);
+}
+
+function finalizar(){
+    let rua = document.getElementById("rua").value;
+
+    if(carrinho.length === 0 || rua === ""){
+        alert("Preencha o pedido e endereço!");
+        return;
     }
 
-    function addAoCarrinho(nome, preco) {
-        carrinho.push({nome, preco});
-        atualizarVisualCarrinho();
-    }
+    let numeroCasa = document.getElementById("numero").value;
+    let bairro = document.getElementById("bairro").value;
+    let pagamento = document.getElementById("pagamento").value;
 
-    function atualizarVisualCarrinho() {
-        const lista = document.getElementById('resumo-carrinho');
-        const totalTxt = document.getElementById('valor-total');
-        lista.innerHTML = "";
-        let total = 0;
+    let msg = "🍕 *TODAY PIZZA* 🍕\n\n";
 
-        carrinho.forEach((item, index) => {
-            lista.innerHTML += `<li>${item.nome} - R$ ${item.preco.toFixed(2)}</li>`;
-            total += item.preco;
-        });
+    carrinho.forEach(i=>{
+        msg += "• " + i.nome + "\n";
+    });
 
-        totalTxt.innerText = total.toFixed(2);
-    }
+    msg += "\n💰 Total: R$ " + total.toFixed(2);
+    msg += "\n📍 Endereço: " + rua + ", " + numeroCasa + " - " + bairro;
+    msg += "\n💳 Pagamento: " + pagamento;
+    msg += "\n🚚 Marechal Cândido Rondon - PR";
 
-    function enviarPedido() {
-        const rua = document.getElementById('rua').value;
-        const num = document.getElementById('numero').value;
-        const bairro = document.getElementById('bairro').value;
-        const pgto = document.getElementById('metodo-pagamento').value;
+    let numero = "5599999999999"; // SEU NUMERO
 
-        if (carrinho.length === 0) return alert("Adicione itens ao carrinho!");
-        if (!rua || !num || !bairro) return alert("Preencha todos os campos de endereço!");
+    let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
 
-        let msg = `🍕 *PEDIDO TODAY PIZZA*\n\n`;
-        carrinho.forEach(i => msg += `• ${i.nome}\n`);
-        msg += `\n💰 *Total:* R$ ${document.getElementById('valor-total').innerText}`;
-        msg += `\n💳 *Pagamento:* ${pgto}`;
-        msg += `\n📍 *Entrega:* ${rua}, nº ${num} - ${bairro}`;
+    window.open(url, "_blank");
+}
 
-        const fone = "5544998905286";
-        const url = `https://wa.me/${fone}?text=${encodeURIComponent(msg)}`;
-        
-        window.open(url, '_blank');
-        alert("✅ PEDIDO CONCLUÍDO COM SUCESSO!");
-    }
+function scrollCardapio(){
+    document.getElementById("cardapio").scrollIntoView({behavior:"smooth"});
+}
 
-    carregarCardapio();
+trocar('salgada');
 </script>
 
 </body>
