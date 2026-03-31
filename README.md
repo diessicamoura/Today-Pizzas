@@ -25,7 +25,7 @@ body {
 /* HERO */
 .hero {
     background: url("https://images.unsplash.com/photo-1593560708920-61dd98c46a4e") center/cover no-repeat;
-    height: 300px;
+    height: 10px;
     position: relative;
 }
 
