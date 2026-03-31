@@ -12,11 +12,10 @@ body {
     color: #333;
 }
 
-/* HERO CLARO */
+/* HERO */
 .hero {
     background: url("https://images.unsplash.com/photo-1593560708920-61dd98c46a4e") center/cover no-repeat;
     height: 260px;
-    position: relative;
 }
 
 .overlay {
@@ -27,7 +26,6 @@ body {
     padding: 20px;
 }
 
-/* LOGO */
 .logo {
     width: 80px;
     height: 80px;
@@ -42,22 +40,10 @@ body {
     width: 60px;
 }
 
-/* TEXTO */
 .hero-text {
     margin-left: 15px;
 }
 
-.hero-text h1 {
-    margin: 0;
-    color: #000;
-}
-
-.hero-text p {
-    margin-top: 5px;
-    color: #555;
-}
-
-/* ALERTA */
 .alerta {
     background: #fff;
     text-align: center;
@@ -66,11 +52,21 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-/* CARDÁPIO */
-.container {
+/* GRID 3 COLUNAS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     padding: 20px;
 }
 
+/* COLUNAS */
+.coluna h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* CARD */
 .pizza {
     background: #fff;
     border-radius: 12px;
@@ -81,31 +77,21 @@ body {
 
 .pizza img {
     width: 100%;
-    height: 170px;
+    height: 140px;
     object-fit: cover;
 }
 
 .pizza-info {
-    padding: 15px;
+    padding: 10px;
 }
 
-.pizza-info h3 {
-    margin: 0;
-}
-
-.pizza-info p {
-    color: #666;
-    font-size: 14px;
-}
-
-/* BOTÃO */
 button {
     background: #f7931e;
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 8px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 8px;
     border-radius: 8px;
     cursor: pointer;
 }
@@ -113,14 +99,12 @@ button {
 /* CARRINHO */
 .carrinho {
     background: #fff;
-    color: #333;
     padding: 15px;
     position: fixed;
     right: 0;
     top: 0;
     width: 280px;
     height: 100%;
-    overflow-y: auto;
     border-left: 1px solid #ddd;
 }
 
@@ -129,13 +113,6 @@ button {
     color: #fff;
     width: 100%;
     margin-top: 10px;
-    font-weight: bold;
-}
-
-select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
 }
 
 </style>
@@ -143,7 +120,6 @@ select {
 
 <body>
 
-<!-- TOPO -->
 <div class="hero">
     <div class="overlay">
         <div class="logo">
@@ -160,54 +136,95 @@ select {
 🚚 Apenas entregas • Marechal Cândido Rondon - PR
 </div>
 
-<!-- CARDÁPIO -->
-<div class="container">
+<!-- GRID -->
+<div class="grid">
+
+<!-- SALGADAS -->
+<div class="coluna">
+<h2>🍕 Salgadas</h2>
 
 <div class="pizza">
-    <img src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143">
-    <div class="pizza-info">
-        <h3>Calabresa</h3>
-        <p>Molho, muçarela, calabresa e cebola</p>
-        <strong>R$ 35,00</strong>
-        <button onclick="addCarrinho('Calabresa',35)">Adicionar</button>
-    </div>
+<img src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143">
+<div class="pizza-info">
+<h3>Calabresa</h3>
+<strong>R$ 35</strong>
+<button onclick="addCarrinho('Calabresa',35)">Adicionar</button>
+</div>
 </div>
 
 <div class="pizza">
-    <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e">
-    <div class="pizza-info">
-        <h3>Frango com Catupiry</h3>
-        <p>Molho, muçarela, frango e catupiry</p>
-        <strong>R$ 38,00</strong>
-        <button onclick="addCarrinho('Frango',38)">Adicionar</button>
-    </div>
+<img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e">
+<div class="pizza-info">
+<h3>Frango c/ Catupiry</h3>
+<strong>R$ 38</strong>
+<button onclick="addCarrinho('Frango',38)">Adicionar</button>
+</div>
+</div>
+
+</div>
+
+<!-- DOCES -->
+<div class="coluna">
+<h2>🍫 Doces</h2>
+
+<div class="pizza">
+<img src="https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8">
+<div class="pizza-info">
+<h3>Chocolate</h3>
+<strong>R$ 30</strong>
+<button onclick="addCarrinho('Chocolate',30)">Adicionar</button>
+</div>
 </div>
 
 <div class="pizza">
-    <img src="https://images.unsplash.com/photo-1594007654729-407eedc4fe24">
-    <div class="pizza-info">
-        <h3>Moda da Casa</h3>
-        <p>Frango, milho, bacon e catupiry</p>
-        <strong>R$ 45,00</strong>
-        <button onclick="addCarrinho('Moda',45)">Adicionar</button>
-    </div>
+<img src="https://images.unsplash.com/photo-1594007654729-407eedc4fe24">
+<div class="pizza-info">
+<h3>Morango com Chocolate</h3>
+<strong>R$ 35</strong>
+<button onclick="addCarrinho('Morango',35)">Adicionar</button>
+</div>
+</div>
+
+</div>
+
+<!-- BEBIDAS -->
+<div class="coluna">
+<h2>🥤 Bebidas</h2>
+
+<div class="pizza">
+<img src="https://images.unsplash.com/photo-1581006852262-e4307cf6283a">
+<div class="pizza-info">
+<h3>Coca-Cola 2L</h3>
+<strong>R$ 12</strong>
+<button onclick="addCarrinho('Coca 2L',12)">Adicionar</button>
+</div>
+</div>
+
+<div class="pizza">
+<img src="https://images.unsplash.com/photo-1577801598627-ff2a44d88b41">
+<div class="pizza-info">
+<h3>Guaraná 2L</h3>
+<strong>R$ 10</strong>
+<button onclick="addCarrinho('Guaraná',10)">Adicionar</button>
+</div>
+</div>
+
 </div>
 
 </div>
 
 <!-- CARRINHO -->
 <div class="carrinho">
-    <h2>Carrinho</h2>
-    <ul id="lista"></ul>
-    <h3>Total: R$ <span id="total">0</span></h3>
+<h2>Carrinho</h2>
+<ul id="lista"></ul>
+<h3>Total: R$ <span id="total">0</span></h3>
 
-    <h3>Pagamento</h3>
-    <select id="pagamento">
-        <option value="pix">PIX</option>
-        <option value="cartao">Cartão na entrega</option>
-    </select>
+<select id="pagamento">
+<option value="pix">PIX</option>
+<option value="cartao">Cartão na entrega</option>
+</select>
 
-    <button class="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+<button class="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
 </div>
 
 <script>
@@ -217,27 +234,21 @@ function addCarrinho(nome, preco){
     let lista = document.getElementById("lista");
 
     let item = document.createElement("li");
-    item.innerText = nome + " - R$ " + preco.toFixed(2);
+    item.innerText = nome + " - R$ " + preco;
 
     lista.appendChild(item);
 
     total += preco;
-    document.getElementById("total").innerText = total.toFixed(2);
+    document.getElementById("total").innerText = total;
 }
 
 function finalizarPedido(){
-    let pagamento = document.getElementById("pagamento").value;
-
     if(total === 0){
         alert("Carrinho vazio!");
         return;
     }
 
-    if(pagamento === "pix"){
-        alert("Pedido feito! Enviaremos o PIX.");
-    } else {
-        alert("Pedido feito! Pague na entrega.");
-    }
+    alert("Pedido realizado!");
 }
 </script>
 
