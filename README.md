@@ -9,7 +9,7 @@
 body {
     margin: 0;
     font-family: 'Georgia', serif;
-    background: #f5e6d3; /* bege retrô */
+    background: #f5e6d3;
 }
 
 /* HEADER */
@@ -22,10 +22,14 @@ body {
     color: #fff;
 }
 
+.header img {
+    width: 40px;
+}
+
 /* HERO */
 .hero {
     background: url("https://images.unsplash.com/photo-1593560708920-61dd98c46a4e") center/cover no-repeat;
-    height: 10px;
+    height: 280px;
     position: relative;
 }
 
@@ -38,23 +42,26 @@ body {
 
 .logo-box {
     background: #d97706;
-    padding: 10px;
-    display: inline-block;
+    padding: 8px;
     border-radius: 8px;
+    display: inline-block;
 }
 
-/* BOTÕES */
+.logo-box img {
+    width: 45px;
+}
+
 .btn {
     background: #d97706;
-    padding: 12px 20px;
-    border-radius: 10px;
+    padding: 10px 18px;
+    border-radius: 8px;
     border: none;
+    color: #fff;
     font-weight: bold;
     cursor: pointer;
-    color: #fff;
 }
 
-/* TÍTULOS */
+/* TITULO */
 .titulo {
     padding: 20px;
     color: #5a3e2b;
@@ -72,7 +79,6 @@ body {
     background: #e8d5b7;
     border-radius: 20px;
     cursor: pointer;
-    color: #5a3e2b;
 }
 
 .tab.active {
@@ -94,11 +100,6 @@ body {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.03);
 }
 
 .card img {
@@ -112,7 +113,6 @@ body {
     color: #4b2e1e;
 }
 
-/* BOTÃO ADD */
 .add {
     background: #d97706;
     color: #fff;
@@ -120,7 +120,6 @@ body {
     width: 100%;
     padding: 8px;
     border-radius: 8px;
-    margin-top: 5px;
 }
 
 /* PEDIDO */
@@ -130,18 +129,33 @@ body {
     padding: 20px;
     border-radius: 15px;
     border: 2px solid #d97706;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     color: #4b2e1e;
 }
 
-/* INPUTS */
 input, select {
     width: 100%;
     padding: 10px;
     margin-top: 8px;
     border-radius: 8px;
     border: 1px solid #d6bfa7;
-    background: #fff;
+}
+
+.linha {
+    display: flex;
+    gap: 10px;
+}
+
+.linha input {
+    flex: 1;
+}
+
+/* PIX BOX */
+#pixBox {
+    display: none;
+    background: #fff3cd;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
 }
 
 /* FINALIZAR */
@@ -173,15 +187,14 @@ input, select {
             <img src="logo.png">
         </div>
         <h2>Delivery em Marechal Cândido Rondon - PR 🍕</h2>
-        <button class="btn" onclick="scrollCardapio()">🍴 Ver Cardápio</button>
+        <button class="btn" onclick="scrollCardapio()">Ver Cardápio</button>
     </div>
 </div>
 
-<!-- CARDÁPIO -->
+<!-- CARDAPIO -->
 <div id="cardapio">
 <div class="titulo">
     <h2>Nosso Cardápio</h2>
-    <p>Escolha sua pizza favorita</p>
 </div>
 
 <div class="tabs">
@@ -202,11 +215,11 @@ input, select {
 
 <hr>
 
-<h4>📍 Dados para Entrega</h4>
-<input type="text" id="rua" placeholder="Rua (Obrigatório)">
+<h4>📍 Endereço</h4>
+<input type="text" id="rua" placeholder="Rua">
 
 <div class="linha">
-    <input type="text" id="numero" placeholder="Nº">
+    <input type="text" id="numero" placeholder="Número">
     <input type="text" id="bairro" placeholder="Bairro">
 </div>
 
@@ -216,50 +229,17 @@ input, select {
 <option value="Cartão">Cartão na entrega</option>
 </select>
 
-<button class="finalizar" onclick="finalizar()">Finalizar Pedido pelo WhatsApp</button>
+<div id="pixBox">
+    <strong>💸 Chave Pix:</strong><br>
+    44998905286
+</div>
+
+<button class="finalizar" onclick="finalizar()">Finalizar no WhatsApp</button>
 </div>
 
 <script>
 let produtos = {
-    salgada: [
-        {nome:"🔥 Combo Família (Calabresa + Coca 2L)", preco:49, destaque:true, img:"https://altoastral.joaobidu.com.br/antigas/uploads/legacy/2016/07/AAT001-P001-89335-1-m-Divulgacao_1.jpg"},
-        {nome:"⭐ Calabresa Especial", preco:35, destaque:true, img:"https://images.unsplash.com/photo-1604382355076-af4b0eb60143"},
-        {nome:"⭐ Frango Cremoso com Catupiry", preco:38, destaque:true, img:"https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"},
-        {nome:"Pepperoni Premium", preco:41, img:"https://images.unsplash.com/photo-1628840042765-356cda07504e"},
-        {nome:"Quatro Queijos Supreme", preco:42, img:"https://images.unsplash.com/photo-1548365328-9f547fb0953d"},
-        {nome:"Moda da Casa Completa", preco:45, img:"https://images.unsplash.com/photo-1594007654729-407eedc4fe24"},
-        {nome:"Bacon Lovers", preco:39, img:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"},
-        {nome:"Portuguesa Tradicional", preco:40, img:"https://images.unsplash.com/photo-1601924638867-3ec2b4d2d8b0"},
-        {nome:"Marguerita Italiana", preco:34, img:"https://images.unsplash.com/photo-1604382354936-07c5d9983bd3"},
-        {nome:"Carne Seca Especial", preco:44, img:"https://images.unsplash.com/photo-1590947132387-155cc02f3212"}
-    ],
-
-    doce: [
-        {nome:"🔥 Combo Doce (Chocolate + Guaraná)", preco:39, destaque:true, img:"https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8"},
-        {nome:"⭐ Chocolate com Morango", preco:35, destaque:true, img:"https://images.unsplash.com/photo-1594007654729-407eedc4fe24"},
-        {nome:"⭐ Sensação Premium", preco:36, destaque:true, img:"https://images.unsplash.com/photo-1613145997987-9b1c4e0c6b77"},
-        {nome:"Nutella Supreme", preco:38, img:"https://images.unsplash.com/photo-1613145997970-db84a7975fbb"},
-        {nome:"Chocolate Branco Especial", preco:34, img:"https://images.unsplash.com/photo-1617196035154-1e1d7c19e781"},
-        {nome:"Doce de Leite Cremoso", preco:33, img:"https://images.unsplash.com/photo-1605478909807-3a6c5c2e7f92"},
-        {nome:"Prestígio", preco:32, img:"https://images.unsplash.com/photo-1599785209707-a456fc1337bb"},
-        {nome:"Banana Nevada", preco:28, img:"https://images.unsplash.com/photo-1585238342024-78d387f4a707"},
-        {nome:"Romeu e Julieta", preco:31, img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
-        {nome:"Oreo", preco:37, img:"https://images.unsplash.com/photo-1586985289906-406988974504"}
-    ],
-
-    bebida: [
-        {nome:"⭐ Coca-Cola 2L (Mais pedida)", preco:12, destaque:true, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"},
-        {nome:"Guaraná 2L", preco:10, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"},
-        {nome:"Fanta Laranja", preco:10, img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"},
-        {nome:"Sprite", preco:10, img:"https://images.unsplash.com/photo-1624517452488-04869289c4ca"},
-        {nome:"Coca-Cola Lata", preco:6, img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"},
-        {nome:"Guaraná Lata", preco:5, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"},
-        {nome:"Água Mineral", preco:4, img:"https://images.unsplash.com/photo-1564419320461-6870880221ad"},
-        {nome:"Suco Natural de Laranja", preco:8, img:"https://images.unsplash.com/photo-1572490122747-3968b75cc699"},
-        {nome:"Suco de Uva", preco:8, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"},
-        {nome:"Refrigerante 600ml", preco:7, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"}
-    ]
-};
+    salgada: [ {nome:"🔥 Combo Família (Calabresa + Coca 2L)", preco:49, destaque:true,         img:"https://altoastral.joaobidu.com.br/antigas/uploads/legacy/2016/07/AAT001-P001-89335-1-m-Divulgacao_1.jpg"}, {nome:"⭐ Calabresa         Especial", preco:35, destaque:true, img:"https://images.unsplash.com/photo-1604382355076-af4b0eb60143"}, {nome:"⭐ Frango Cremoso     com Catupiry", preco:38, destaque:true, img:"https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"}, {nome:"Pepperoni Premium",     preco:41, img:"https://images.unsplash.com/photo-1628840042765-356cda07504e"}, {nome:"Quatro Queijos Supreme", preco:42,         img:"https://images.unsplash.com/photo-1548365328-9f547fb0953d"}, {nome:"Moda da Casa Completa", preco:45, img:"https://images.unsplash.com/photo-1594007654729-407eedc4fe24"}, {nome:"Bacon Lovers", preco:39, img:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"}, {nome:"Portuguesa Tradicional", preco:40, img:"https://images.unsplash.com/photo-1601924638867-3ec2b4d2d8b0"}, {nome:"Marguerita Italiana", preco:34, img:"https://images.unsplash.com/photo-1604382354936-07c5d9983bd3"}, {nome:"Carne Seca Especial", preco:44, img:"https://images.unsplash.com/photo-1590947132387-155cc02f3212"} ], doce: [ {nome:"🔥 Combo Doce (Chocolate + Guaraná)", preco:39, destaque:true, img:"https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8"}, {nome:"⭐ Chocolate com Morango", preco:35, destaque:true, img:"https://images.unsplash.com/photo-1594007654729-407eedc4fe24"}, {nome:"⭐ Sensação Premium", preco:36, destaque:true, img:"https://images.unsplash.com/photo-1613145997987-9b1c4e0c6b77"}, {nome:"Nutella Supreme", preco:38, img:"https://images.unsplash.com/photo-1613145997970-db84a7975fbb"}, {nome:"Chocolate Branco Especial", preco:34, img:"https://images.unsplash.com/photo-1617196035154-1e1d7c19e781"}, {nome:"Doce de Leite Cremoso", preco:33, img:"https://images.unsplash.com/photo-1605478909807-3a6c5c2e7f92"}, {nome:"Prestígio", preco:32, img:"https://images.unsplash.com/photo-1599785209707-a456fc1337bb"}, {nome:"Banana Nevada", preco:28, img:"https://images.unsplash.com/photo-1585238342024-78d387f4a707"}, {nome:"Romeu e Julieta", preco:31, img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"}, {nome:"Oreo", preco:37, img:"https://images.unsplash.com/photo-1586985289906-406988974504"} ], bebida: [ {nome:"⭐ Coca-Cola 2L (Mais pedida)", preco:12, destaque:true, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"}, {nome:"Guaraná 2L", preco:10, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"}, {nome:"Fanta Laranja", preco:10, img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"}, {nome:"Sprite", preco:10, img:"https://images.unsplash.com/photo-1624517452488-04869289c4ca"}, {nome:"Coca-Cola Lata", preco:6, img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"}, {nome:"Guaraná Lata", preco:5, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"}, {nome:"Água Mineral", preco:4, img:"https://images.unsplash.com/photo-1564419320461-6870880221ad"}, {nome:"Suco Natural de Laranja", preco:8, img:"https://images.unsplash.com/photo-1572490122747-3968b75cc699"}, {nome:"Suco de Uva", preco:8, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"}, {nome:"Refrigerante 600ml", preco:7, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"} ] };
 
 let carrinho = [];
 let total = 0;
@@ -276,14 +256,9 @@ function trocar(tipo){
         <div class="card">
             <img src="${p.img}">
             <div class="info">
-                <h4>
-${p.nome} 
-${p.destaque ? '<span style="color:#f7931e;font-size:12px;">★</span>' : ''}
-</h4>
+                <h4>${p.nome}</h4>
                 <strong>R$ ${p.preco}</strong>
-                <button class="add" onclick="add('${p.nome}',${p.preco})">
-➕ Adicionar
-</button>
+                <button class="add" onclick="add('${p.nome}',${p.preco})">Adicionar</button>
             </div>
         </div>`;
     });
@@ -321,14 +296,23 @@ function finalizar(){
     msg += "\n💰 Total: R$ " + total.toFixed(2);
     msg += "\n📍 Endereço: " + rua + ", " + numeroCasa + " - " + bairro;
     msg += "\n💳 Pagamento: " + pagamento;
+
+    if(pagamento === "PIX"){
+        msg += "\n💸 Chave Pix: 44998905286";
+    }
+
     msg += "\n🚚 Marechal Cândido Rondon - PR";
 
-    let numero = "5544998905286"; // SEU NUMERO
-
+    let numero = "5544998905286";
     let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
 
     window.open(url, "_blank");
 }
+
+document.getElementById("pagamento").addEventListener("change", function(){
+    let pix = document.getElementById("pixBox");
+    pix.style.display = this.value === "PIX" ? "block" : "none";
+});
 
 function scrollCardapio(){
     document.getElementById("cardapio").scrollIntoView({behavior:"smooth"});
