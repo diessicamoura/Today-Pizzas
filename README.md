@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Today Pizza</title>
+
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -15,11 +16,10 @@
         text-align: center;
         padding: 20px;
         background: #000;
-        color: #f7931e;
     }
 
     header img {
-        width: 150px;
+        width: 180px;
     }
 
     .alerta {
@@ -47,6 +47,7 @@
         padding: 10px;
         cursor: pointer;
         margin-top: 10px;
+        border-radius: 5px;
     }
 
     .carrinho {
@@ -66,6 +67,7 @@
         color: #000;
         width: 100%;
         margin-top: 10px;
+        font-weight: bold;
     }
 
 </style>
@@ -74,7 +76,7 @@
 <body>
 
 <header>
-    <h1>TODAY PIZZA</h1>
+    <img src="logo.png" alt="Today Pizza">
 </header>
 
 <div class="alerta">
@@ -94,7 +96,7 @@
         <h3>Frango com Catupiry</h3>
         <p>Molho, muçarela, frango e catupiry</p>
         <strong>R$ 38,00</strong><br>
-        <button onclick="addCarrinho('Frango', 38)">Adicionar</button>
+        <button onclick="addCarrinho('Frango com Catupiry', 38)">Adicionar</button>
     </div>
 
     <div class="pizza">
@@ -127,11 +129,11 @@
         let lista = document.getElementById("lista");
 
         let item = document.createElement("li");
-        item.innerText = nome + " - R$ " + preco;
+        item.innerText = nome + " - R$ " + preco.toFixed(2);
         lista.appendChild(item);
 
         total += preco;
-        document.getElementById("total").innerText = total;
+        document.getElementById("total").innerText = total.toFixed(2);
     }
 
     function finalizarPedido() {
