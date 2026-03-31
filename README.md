@@ -8,33 +8,38 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     background: #f5f5f5;
 }
 
-/* TOPO */
+/* HERO */
 .hero {
-    background: #fff;
+    background: url("https://images.unsplash.com/photo-1593560708920-61dd98c46a4e") center/cover no-repeat;
+    height: 200px;
+}
+
+.overlay {
+    background: rgba(255,255,255,0.85);
+    height: 100%;
     display: flex;
     align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+    padding: 20px;
 }
 
 .logo img {
-    width: 60px;
+    width: 70px;
 }
 
 .hero-text {
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 /* ALERTA */
 .alerta {
+    background: #fff;
     text-align: center;
     padding: 10px;
     font-weight: bold;
-    background: #fff;
 }
 
 /* ABAS */
@@ -42,7 +47,8 @@ body {
     display: flex;
     justify-content: space-around;
     background: #fff;
-    border-bottom: 1px solid #ddd;
+    margin-top: -20px;
+    border-radius: 12px 12px 0 0;
 }
 
 .tab {
@@ -63,19 +69,20 @@ body {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
     gap: 15px;
 }
 
 .card {
     background: #fff;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .card img {
     width: 100%;
-    height: 120px;
+    height: 140px;
     object-fit: cover;
 }
 
@@ -87,9 +94,10 @@ button {
     background: #f7931e;
     color: #fff;
     border: none;
-    padding: 8px;
+    padding: 10px;
     width: 100%;
-    border-radius: 6px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 /* CARRINHO */
@@ -97,7 +105,7 @@ button {
     position: fixed;
     right: 0;
     top: 0;
-    width: 250px;
+    width: 280px;
     height: 100%;
     background: #fff;
     border-left: 1px solid #ddd;
@@ -105,7 +113,7 @@ button {
     overflow-y: auto;
 }
 
-@media(max-width: 800px){
+@media(max-width: 900px){
     .carrinho {
         width: 100%;
         height: auto;
@@ -118,6 +126,8 @@ input, select {
     width: 100%;
     padding: 8px;
     margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
 .finalizar {
@@ -128,18 +138,21 @@ input, select {
 
 <body>
 
+<!-- TOPO -->
 <div class="hero">
-    <div class="logo">
-        <img src="logo.png">
-    </div>
-    <div class="hero-text">
-        <h2>Today Pizza</h2>
-        <p>Delivery Marechal Cândido Rondon - PR</p>
+    <div class="overlay">
+        <div class="logo">
+            <img src="logo.png">
+        </div>
+        <div class="hero-text">
+            <h2>Today Pizza</h2>
+            <p>Delivery Marechal Cândido Rondon - PR</p>
+        </div>
     </div>
 </div>
 
 <div class="alerta">
-🚚 Apenas entregas
+🚚 Apenas entregas • Marechal Cândido Rondon - PR
 </div>
 
 <!-- ABAS -->
@@ -168,7 +181,7 @@ input, select {
 <option value="cartao">Cartão na entrega</option>
 </select>
 
-<button class="finalizar" onclick="finalizarPedido()">Finalizar</button>
+<button class="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
 </div>
 
 <script>
@@ -225,7 +238,7 @@ function finalizarPedido(){
     let endereco = document.getElementById("endereco").value;
 
     if(carrinho.length === 0 || endereco === ""){
-        alert("Preencha tudo!");
+        alert("Preencha o carrinho e o endereço!");
         return;
     }
 
@@ -234,21 +247,21 @@ function finalizarPedido(){
     let msg = "🍕 *TODAY PIZZA* 🍕\n\n";
 
     carrinho.forEach(i=>{
-        msg += "• " + i.nome + "\n";
+        msg += "• " + i.nome + " - R$ " + i.preco.toFixed(2) + "\n";
     });
 
     msg += "\n💰 Total: R$ " + total.toFixed(2);
     msg += "\n📍 Endereço: " + endereco;
     msg += "\n💳 Pagamento: " + pagamento;
+    msg += "\n🚚 Marechal Cândido Rondon - PR";
 
-    let numero = "5544998905286"; // SEU NUMERO
+    let numero = "5544998905286"; // SEU NÚMERO
 
     let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(msg);
 
     window.open(url, "_blank");
 }
 
-/* CARREGA INICIAL */
 trocar('salgada');
 </script>
 
