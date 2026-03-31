@@ -8,19 +8,19 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #111;
-    color: #fff;
+    background: #f5f5f5;
+    color: #333;
 }
 
-/* TOPO COM IMAGEM */
+/* HERO CLARO */
 .hero {
-    background: url("https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8") center/cover no-repeat;
-    height: 300px;
+    background: url("https://images.unsplash.com/photo-1593560708920-61dd98c46a4e") center/cover no-repeat;
+    height: 260px;
     position: relative;
 }
 
 .overlay {
-    background: rgba(0,0,0,0.6);
+    background: rgba(255,255,255,0.75);
     height: 100%;
     display: flex;
     align-items: center;
@@ -29,40 +29,41 @@ body {
 
 /* LOGO */
 .logo {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     background: #f7931e;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .logo img {
-    width: 70px;
+    width: 60px;
 }
 
-/* TEXTO AO LADO DA LOGO */
+/* TEXTO */
 .hero-text {
     margin-left: 15px;
 }
 
 .hero-text h1 {
     margin: 0;
-    color: #f7931e;
+    color: #000;
 }
 
 .hero-text p {
-    margin: 5px 0 0;
+    margin-top: 5px;
+    color: #555;
 }
 
 /* ALERTA */
 .alerta {
-    background: #f7931e;
-    color: #000;
+    background: #fff;
     text-align: center;
-    padding: 10px;
+    padding: 12px;
     font-weight: bold;
+    border-bottom: 1px solid #ddd;
 }
 
 /* CARDÁPIO */
@@ -71,15 +72,16 @@ body {
 }
 
 .pizza {
-    background: #1c1c1c;
-    border-radius: 10px;
+    background: #fff;
+    border-radius: 12px;
     margin-bottom: 15px;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .pizza img {
     width: 100%;
-    height: 180px;
+    height: 170px;
     object-fit: cover;
 }
 
@@ -87,22 +89,31 @@ body {
     padding: 15px;
 }
 
+.pizza-info h3 {
+    margin: 0;
+}
+
+.pizza-info p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* BOTÃO */
 button {
     background: #f7931e;
-    color: #000;
+    color: #fff;
     border: none;
     padding: 10px;
     width: 100%;
     margin-top: 10px;
+    border-radius: 8px;
     cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
 }
 
 /* CARRINHO */
 .carrinho {
-    background: #000;
-    color: #fff;
+    background: #fff;
+    color: #333;
     padding: 15px;
     position: fixed;
     right: 0;
@@ -110,12 +121,21 @@ button {
     width: 280px;
     height: 100%;
     overflow-y: auto;
+    border-left: 1px solid #ddd;
 }
 
 .finalizar {
     background: #f7931e;
-    color: #000;
+    color: #fff;
     width: 100%;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
 }
 
 </style>
@@ -137,7 +157,7 @@ button {
 </div>
 
 <div class="alerta">
-🚚 SOMENTE ENTREGA
+🚚 Apenas entregas • Marechal Cândido Rondon - PR
 </div>
 
 <!-- CARDÁPIO -->
@@ -167,7 +187,7 @@ button {
     <img src="https://images.unsplash.com/photo-1594007654729-407eedc4fe24">
     <div class="pizza-info">
         <h3>Moda da Casa</h3>
-        <p>Frango, milho, bacon, catupiry</p>
+        <p>Frango, milho, bacon e catupiry</p>
         <strong>R$ 45,00</strong>
         <button onclick="addCarrinho('Moda',45)">Adicionar</button>
     </div>
@@ -187,7 +207,7 @@ button {
         <option value="cartao">Cartão na entrega</option>
     </select>
 
-    <button class="finalizar" onclick="finalizarPedido()">Finalizar</button>
+    <button class="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
 </div>
 
 <script>
