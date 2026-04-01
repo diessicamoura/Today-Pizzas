@@ -194,13 +194,13 @@ input, select {
 <!-- CARDAPIO -->
 <div id="cardapio">
 <div class="titulo">
-    <h2>Nosso Cardápio</h2>
+    <h2>🔥 Mais Pedidos</h2>
 </div>
 
 <div class="tabs">
     <div class="tab active" onclick="trocar('salgada')">Salgadas</div>
     <div class="tab" onclick="trocar('doce')">Doces</div>
-    <div class="tab" onclick="trocar('bebida')">Bebidas</div>
+    <div class="tab" onclick="trocar('bebida')">BEBIDAS</div>
 </div>
 
 <div class="grid" id="produtos"></div>
@@ -239,18 +239,52 @@ input, select {
 
 <script>
 let produtos = {
+
+    destaque: [
+        {nome:"🔥 Calabresa Especial", preco:35, img:"https://images.unsplash.com/photo-1604382355076-af4b0eb60143"},
+        {nome:"🔥 Frango com Catupiry", preco:38, img:"https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"},
+        {nome:"🔥 Pepperoni Premium", preco:40, img:"https://images.unsplash.com/photo-1628840042765-356cda07504e"},
+        {nome:"🔥 Chocolate com Morango", preco:35, img:"https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8"},
+        {nome:"🔥 Coca-Cola 2L", preco:12, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"}
+    ],
+
     salgada: [
         {nome:"Calabresa", preco:35, img:"https://images.unsplash.com/photo-1604382355076-af4b0eb60143"},
         {nome:"Frango Catupiry", preco:38, img:"https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"},
-        {nome:"Pepperoni", preco:40, img:"https://images.unsplash.com/photo-1628840042765-356cda07504e"}
+        {nome:"Pepperoni", preco:40, img:"https://images.unsplash.com/photo-1628840042765-356cda07504e"},
+        {nome:"Quatro Queijos", preco:42, img:"https://images.unsplash.com/photo-1548365328-9f547fb0953d"},
+        {nome:"Portuguesa", preco:39, img:"https://images.unsplash.com/photo-1601924638867-3ec2b4d2d8b0"},
+        {nome:"Bacon", preco:41, img:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"},
+        {nome:"Moda da Casa", preco:45, img:"https://images.unsplash.com/photo-1594007654729-407eedc4fe24"},
+        {nome:"Marguerita", preco:34, img:"https://images.unsplash.com/photo-1604382354936-07c5d9983bd3"},
+        {nome:"Carne Seca", preco:44, img:"https://images.unsplash.com/photo-1590947132387-155cc02f3212"},
+        {nome:"Milho com Bacon", preco:36, img:"https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8"}
     ],
+
     doce: [
         {nome:"Chocolate", preco:30, img:"https://images.unsplash.com/photo-1601924582975-7e6c94b2a8f8"},
-        {nome:"Morango", preco:32, img:"https://images.unsplash.com/photo-1613145997987-9b1c4e0c6b77"}
+        {nome:"Morango", preco:32, img:"https://images.unsplash.com/photo-1613145997987-9b1c4e0c6b77"},
+        {nome:"Nutella", preco:35, img:"https://images.unsplash.com/photo-1613145997970-db84a7975fbb"},
+        {nome:"Chocolate Branco", preco:34, img:"https://images.unsplash.com/photo-1617196035154-1e1d7c19e781"},
+        {nome:"Doce de Leite", preco:33, img:"https://images.unsplash.com/photo-1605478909807-3a6c5c2e7f92"},
+        {nome:"Prestígio", preco:32, img:"https://images.unsplash.com/photo-1599785209707-a456fc1337bb"},
+        {nome:"Banana Nevada", preco:28, img:"https://images.unsplash.com/photo-1585238342024-78d387f4a707"},
+        {nome:"Romeu e Julieta", preco:31, img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
+        {nome:"Oreo", preco:37, img:"https://images.unsplash.com/photo-1586985289906-406988974504"},
+        {nome:"Sensação", preco:36, img:"https://images.unsplash.com/photo-1613145997987-9b1c4e0c6b77"}
     ],
+
     bebida: [
-        {nome:"Coca 2L", preco:12, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"},
-        {nome:"Guaraná", preco:10, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"}
+        {nome:"Coca-Cola 2L", preco:12, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"},
+        {nome:"Guaraná 2L", preco:10, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"},
+        {nome:"Fanta Laranja", preco:10, img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"},
+        {nome:"Sprite", preco:10, img:"https://images.unsplash.com/photo-1624517452488-04869289c4ca"},
+        {nome:"Coca-Cola Lata", preco:6, img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"},
+        {nome:"Guaraná Lata", preco:5, img:"https://images.unsplash.com/photo-1577801598627-ff2a44d88b41"},
+        {nome:"Fanta Uva", preco:6, img:"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b"},
+        {nome:"Sprite Lata", preco:6, img:"https://images.unsplash.com/photo-1624517452488-04869289c4ca"},
+        {nome:"Pepsi 2L", preco:11, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"},
+        {nome:"Refrigerante 600ml", preco:7, img:"https://images.unsplash.com/photo-1581006852262-e4307cf6283a"}
     ]
 };
 
@@ -260,7 +294,10 @@ let total = 0;
 function trocar(tipo){
     document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
     event.target.classList.add('active');
+    render(tipo);
+}
 
+function render(tipo){
     let lista = document.getElementById("produtos");
     lista.innerHTML = "";
 
@@ -331,7 +368,8 @@ function scrollCardapio(){
     document.getElementById("cardapio").scrollIntoView({behavior:"smooth"});
 }
 
-trocar('salgada');
+/* INICIA COM MAIS PEDIDOS */
+render('destaque');
 </script>
 
 </body>
