@@ -7,7 +7,7 @@
 
 <style>
     :root {
-        --primary: #f7931e; /* Laranja da logo */
+        --primary: #f7931e;
         --bg-light: #fdfdfd;
         --text-dark: #333;
     }
@@ -19,7 +19,7 @@
         color: var(--text-dark);
     }
 
-    /* --- HEADER (IGUAL À IMAGEM) --- */
+    /* HEADER */
     .header {
         background: var(--primary);
         height: 60px;
@@ -34,12 +34,13 @@
 
     .logo-header {
         background: var(--primary);
-        padding: 10px;
+        padding: 5px;
         border-radius: 0 0 10px 10px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin-top: 15px;
     }
 
-    .logo-header img { width: 50px; display: block; }
+    .logo-header img { width: 55px; display: block; border-radius: 5px; }
 
     .header-icons {
         display: flex;
@@ -48,9 +49,9 @@
         font-size: 1.4rem;
     }
 
-    /* --- HERO/BANNER (IGUAL À IMAGEM) --- */
+    /* HERO/BANNER */
     .hero {
-        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://images.unsplash.com/photo-1593560708920-61dd98c46a4e") center/cover;
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://images.unsplash.com/photo-1593560708920-61dd98c46a4e") center/cover;
         height: 350px;
         display: flex;
         flex-direction: column;
@@ -61,16 +62,16 @@
 
     .hero-logo-box {
         background: var(--primary);
-        width: 80px;
-        height: 80px;
-        padding: 10px;
+        width: 70px;
+        height: 70px;
+        padding: 5px;
         border-radius: 5px;
         margin-bottom: 15px;
     }
 
-    .hero-logo-box img { width: 100%; }
+    .hero-logo-box img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
 
-    .hero h2 { margin: 0 0 15px; font-size: 1.5rem; line-height: 1.2; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+    .hero h2 { margin: 0 0 15px; font-size: 1.5rem; line-height: 1.2; }
 
     .btn-ver-cardapio {
         background: var(--primary);
@@ -79,7 +80,6 @@
         padding: 12px 25px;
         border-radius: 12px;
         font-weight: bold;
-        font-size: 1rem;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -87,12 +87,12 @@
         width: fit-content;
     }
 
-    /* --- SEÇÃO CARDÁPIO --- */
+    /* SEÇÃO CARDÁPIO */
     .cardapio-info { padding: 30px 20px 10px; }
-    .cardapio-info h2 { margin: 0; font-size: 1.8rem; font-family: serif; }
+    .cardapio-info h2 { margin: 0; font-size: 1.8rem; }
     .cardapio-info p { color: #888; margin: 5px 0; }
 
-    /* --- ABAS (CATEGORIAS PILLS) --- */
+    /* ABAS (PILLS) */
     .tabs {
         display: flex;
         gap: 10px;
@@ -101,39 +101,38 @@
     }
 
     .tab {
-        background: #f0f0f0;
+        background: #eee;
         color: #666;
         padding: 10px 25px;
         border-radius: 25px;
         font-weight: 500;
         cursor: pointer;
         white-space: nowrap;
-        transition: 0.3s;
     }
 
     .tab.active {
         background: white;
         color: #333;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        border: 1px solid #eee;
+        border: 1px solid #ddd;
     }
 
-    /* --- LISTA DE PRODUTOS --- */
-    .pizza-list { padding: 15px; }
+    /* LISTA DE PRODUTOS */
+    .pizza-list { padding: 15px; min-height: 200px; }
 
     .card-pizza {
         background: white;
-        margin-bottom: 15px;
-        padding: 15px;
+        margin-bottom: 12px;
+        padding: 12px;
         border-radius: 15px;
         display: flex;
         align-items: center;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
     .card-pizza img {
-        width: 70px;
-        height: 70px;
+        width: 65px;
+        height: 65px;
         border-radius: 50%;
         object-fit: cover;
         margin-right: 15px;
@@ -146,13 +145,14 @@
     .btn-add {
         border: 1px solid #ddd;
         background: white;
-        padding: 8px 15px;
+        padding: 6px 12px;
         border-radius: 20px;
         font-weight: bold;
         cursor: pointer;
+        color: var(--primary);
     }
 
-    /* --- CHECKOUT --- */
+    /* CHECKOUT */
     .checkout-container {
         margin: 20px;
         padding: 20px;
@@ -167,7 +167,6 @@
         margin-top: 10px;
         border: 1px solid #eee;
         border-radius: 10px;
-        background: #fcfcfc;
         box-sizing: border-box;
     }
 
@@ -198,7 +197,7 @@
 
 <div class="header">
     <div class="logo-header">
-        <img src="TODAY-PNG.jpg" alt="Today Pizza">
+        <img src="TODAY-PNG.jpg" alt="Logo">
     </div>
     <div class="header-icons">
         <span>🛒</span>
@@ -222,10 +221,9 @@
 </div>
 
 <div class="tabs">
-    <div class="tab active" onclick="trocar('salgada')">Todas</div>
-    <div class="tab" onclick="trocar('salgada')">Clássicas</div>
-    <div class="tab" onclick="trocar('doce')">Especiais</div>
-    <div class="tab" onclick="trocar('bebida')">Bebidas</div>
+    <div class="tab active" onclick="trocarCategoria('salgada', this)">Salgadas</div>
+    <div class="tab" onclick="trocarCategoria('doce', this)">Doces</div>
+    <div class="tab" onclick="trocarCategoria('bebida', this)">Bebidas</div>
 </div>
 
 <div class="pizza-list" id="lista-produtos"></div>
@@ -237,7 +235,7 @@
 
     <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
 
-    <h4>📍 Endereço de Entrega</h4>
+    <h4>📍 Endereço</h4>
     <input type="text" id="rua" placeholder="Rua">
     <div style="display: flex; gap: 10px;">
         <input type="text" id="numero" placeholder="Número">
@@ -258,8 +256,7 @@
 </div>
 
 <script>
-    // SISTEMA ORIGINAL MANTIDO
-    let itensCardapio = {
+    const itensCardapio = {
         salgada: [
             {nome: "Calabresa Especial", preco: 35, img: "https://images.unsplash.com/photo-1604382355076-af4b0eb60143"},
             {nome: "Frango com Catupiry", preco: 38, img: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e"},
@@ -301,10 +298,9 @@
     let carrinho = [];
     let totalSoma = 0;
 
-    function trocar(categoria) {
-        // Atualizar aba ativa visualmente
+    function trocarCategoria(categoria, elemento) {
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        event.target.classList.add('active');
+        elemento.classList.add('active');
 
         const container = document.getElementById("lista-produtos");
         container.innerHTML = "";
@@ -317,12 +313,12 @@
                     <h4>${p.nome}</h4>
                     <span>R$ ${p.preco.toFixed(2)}</span>
                 </div>
-                <button class="btn-add" onclick="adicionar('${p.nome}', ${p.preco})">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('${p.nome}', ${p.preco})">Adicionar</button>
             </div>`;
         });
     }
 
-    function adicionar(nome, preco) {
+    function adicionarAoCarrinho(nome, preco) {
         carrinho.push({nome, preco});
         totalSoma += preco;
         
@@ -363,9 +359,11 @@
         alert("✅ PEDIDO CONCLUÍDO COM SUCESSO!");
     }
 
-    // Iniciar na aba salgada
-    trocar('salgada');
-    togglePix();
+    // Inicialização
+    window.onload = () => {
+        trocarCategoria('salgada', document.querySelector('.tab'));
+        togglePix();
+    };
 </script>
 
 </body>
